@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,20 +14,28 @@ use Illuminate\Support\Facades\Route;
  |
  */
 
+
+// Find All
 Route::get('/', function () {
   return view('listings', [
     'heading' => 'Latest Listings',
-    "listings" => [
-      [
-        "id" => 1,
-        "title" => "Listing One",
-        "description" => "Est stet clita ipsum amet amet sadipscing dolores rebum consetetur amet. Dolor ea et labore ipsum labore ipsum dolore nonumy..",
-      ],
-      [
-        "id" => 2,
-        "title" => "Listing Two",
-        "description" => "Gild eremites plain say tis shell not but. But so girls her yet present, clay dome long nor was. Blazon.",
-      ],
-    ]
+    "listings" => Listing::all(),
   ]);
+});
+
+
+// Find One
+Route::get('/listings/{id}', function ($id) {
+  $listing = Listing::find($id);
+  // if ($listing) {
+    return view('listing', [
+      'heading' => 'Listing Found.',
+      "listing" => $listing,
+    ]);
+  // } else {
+  //   return view('listing', [
+  //     'heading' => 'Listing Not Found',
+  //     "special" => [],
+  //   ]);
+  // }
 });
