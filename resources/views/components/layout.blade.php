@@ -26,7 +26,7 @@
 
 <body>
   <nav class="flex justify-between items-center mb-4">
-    <a href="/index"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
+    <a href="/"><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a>
     <ul class="flex space-x-6 mr-6 text-lg">
       <li>
         <a href="/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
@@ -38,7 +38,7 @@
     </ul>
   </nav>
   <main>
-    @yield('content')
+    {{ $slot }}
   </main>
   <footer
     class="relative w-full flex items-center justify-start font-bold bg-laravel text-white h-36 mt-10 opacity-90 md:justify-center">

@@ -1,5 +1,4 @@
-@extends('layout')
-@section('content')
+<x-layout>
   @include('partials._hero')
   @include('partials._search')
 
@@ -34,7 +33,8 @@
                 {{ $listing->email }}</a>
 
               <a href="{{ $listing->website }}" target="_blank"
-                class="block bg-black text-white py-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-globe"></i> Visit
+                class="block bg-black text-white py-2 rounded-xl hover:opacity-80"><i class="fa-solid fa-globe"></i>
+                Visit
                 {{ $listing->website }}</a>
             </div>
           </div>
@@ -42,4 +42,4 @@
       </x-card>
     </div>
   @endif
-@endsection
+</x-layout>
