@@ -23,19 +23,10 @@ Route::get('/', function () {
   ]);
 });
 
-
 // Find One
-Route::get('/listings/{id}', function ($id) {
-  $listing = Listing::find($id);
-  // if ($listing) {
-    return view('listing', [
-      'heading' => 'Listing Found.',
-      "listing" => $listing,
-    ]);
-  // } else {
-  //   return view('listing', [
-  //     'heading' => 'Listing Not Found',
-  //     "special" => [],
-  //   ]);
-  // }
+Route::get('/listings/{listing}', function (Listing $listing) {
+  return view('listing', [
+    'heading' => 'Listing Found.',
+    "listing" => $listing,
+  ]);
 });
