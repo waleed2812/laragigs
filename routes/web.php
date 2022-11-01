@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 // Find All
 Route::get('/', [ListingController::class, "index"]);
+Route::get('/listings', [ListingController::class, "index"]);
+
+// Listings show create
+Route::post('/listings', [ListingController::class, "store"]);
+Route::get('/listings/create', [ListingController::class, "create"]);
 
 // Find One
 Route::get('/listings/{listing}', [ListingController::class, "show"]);

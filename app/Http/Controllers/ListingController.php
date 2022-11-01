@@ -12,7 +12,7 @@ class ListingController extends Controller
   public function index()
   {
     return view('listings.index', [
-      "listings" => Listing::latest()->filter([request("tag")])->get(),
+      "listings" => Listing::latest()->filter(request(["tag", "search", "location"]))->paginate(10),
     ]);
   }
   // Find One
@@ -21,5 +21,26 @@ class ListingController extends Controller
     return view('listings.show', [
       "listing" => $listing,
     ]);
+  }
+  // Show Create
+  public function create()
+  {
+    return view('listings.create');
+  }
+
+  // Store Data
+  public function store(Request $request)
+  {
+    $formFields = $request->validate([
+      "title" => 'required',
+      'company' => 'required',
+      "location" => 'required',
+      "website" => "required",
+      "email" => ["required", "email"],
+      "tags" => "required",
+      "description" => "required",
+    ]);
+    Listing::create($formFields);
+    return redirect("/")->with("message", "Listing created successfully.");
   }
 }
