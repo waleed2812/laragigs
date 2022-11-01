@@ -15,6 +15,13 @@ class ListingController extends Controller
       "listings" => Listing::latest()->filter(request(["tag", "search", "location"]))->paginate(10),
     ]);
   }
+  // Find All
+  public function listings()
+  {
+    return view('listings.listings', [
+      "listings" => Listing::latest()->filter(request(["tag", "search", "location"]))->paginate(10),
+    ]);
+  }
   // Find One
   public function show(Listing $listing)
   {
