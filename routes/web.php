@@ -24,5 +24,12 @@ Route::get('/listings', [ListingController::class, "index"]);
 Route::post('/listings', [ListingController::class, "store"]);
 Route::get('/listings/create', [ListingController::class, "create"]);
 
+// Editing
+Route::put('/listings/{listing}', [ListingController::class, "update"]);
+Route::get('/listings/edit/{listing}', [ListingController::class, "edit"]);
+
 // Find One
 Route::get('/listings/{listing}', [ListingController::class, "show"]);
+
+// Delete Listing
+Route::delete('/listings/{listing}', [ListingController::class, "delete"]);
